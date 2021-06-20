@@ -9,8 +9,183 @@
 </head>
 
 <body>
+
+    <!-- 11 не явное приведение, слабая типизация -->
     <script>
         "use strict";
+        10 + "hello"; //"10hello"
+        3 + "8"; //"38"
+        20 / 5; //4
+    </script>
+
+    <!-- 12 приоритет операторов -->
+    <script>
+        "use strict";
+        2 + 2 * 2 //6
+    </script>
+
+    <!-- 13 оператор группировки -->
+    <script>
+        "use strict";
+        (2 + 2) * 2 //8
+    </script>
+
+    <!-- 14 ассоциативность операторов -->
+    <script>
+        "use strict";
+        4 / 2 //2
+        2 / 4 //0.5
+        let a = 8;
+        alert(a); //8
+    </script>
+
+    <!-- 15 константы -->
+    <script>
+        "use strict";
+        let a = 8;
+        a = 6;
+        alert(a); //6
+
+        const b = 8;
+        //b = 7; //ошибка
+    </script>
+
+    <!-- 16 динамическая типизация -->
+    <script>
+        "use strict";
+        let a = 7;
+        a = "seven";
+        alert(a); //"seven"
+    </script>
+
+    <!-- 17 базовый ввод вывод -->
+    <script>
+        "use strict";
+        //ввод
+        let name = prompt("Введите имя");
+        //вывод
+        alert(name);
+    </script>
+
+    <!-- 18 литерал и не литерал -->
+    <script>
+        "use strict";
+        let num = prompt("Введите число"); //10
+        let result = num * 10;
+        alert(result); //100
+    </script>
+
+    <!-- 19 совмещенные операторы -->
+    <script>
+        "use strict";
+        let c = 25;
+        c += 10; //35
+        console.log(c);
+    </script>
+
+    <!-- 20 шаблонные литералы -->
+    <script>
+        "use strict";
+        name = "Jhon Pipe";
+        let age = 25;
+        console.log("name: " + name + ", age: " + age);
+        console.log(`name: ${name}, age: ${age}`);
+    </script>
+
+    <!-- 21 строгий режим -->
+    <script>
+        g = "hello"; //доступна из любого места программы (Global)
+        alert(g);
+
+        "use strict";
+        g = "hello"; //g is not defined
+        alert(g);
+    </script>
+
+    <!-- 22 null и undefined -->
+    <script>
+        "use strict";
+        let message = null; //null
+        let d; //undefind
+    </script>
+
+    <!-- 23 оператор typeof -->
+    <script>
+        "use strict";
+        typeof 54; //"number"
+        typeof "hello"; //"string"
+        typeof true; //"boolean"
+        typeof null //"object" - общепризнанная лошибка
+        let n;
+        typeof n; //"undefined"
+    </script>
+
+    <!-- 24 debugger -->
+    <script>
+        "use strict";
+        const a24 = 2;
+        const b24 = 5;
+        debugger; //остановиться здесь даже если не стоит точки остановки
+    </script>
+
+    <!-- 25 польза от переменных -->
+    <script>
+        "use strict";
+        4 * 5 * 7; //wrong
+        let day = 4;
+        let count = 5;
+        let dayOfWeak = 7;
+        day * count * dayOfWeak; //right
+    </script>
+
+    <!-- 26 копируем из переменной в другую переменную -->
+    <script>
+        "use strict";
+        let sum27 = 3 + 2;
+        let anotherSum27 = sum27;
+        alert(anotherSum27);
+    </script>
+
+    <!-- 27 унарный плюс -->
+    <script>
+        "use strict";
+        let num27_1 = prompt("Введите число"); //"7"
+        let num27_2 = prompt("Введите второе число"); //"8"
+        alert(num27_1 + num27_2); //"78"
+
+        let num27_1 = +prompt("Введите число"); //7
+        let num27_2 = +prompt("Введите второе число"); //8
+        alert(num27_1 + num27_2); //15
+    </script>
+
+    <!-- 28 NaN -->
+    <script>
+        "use strict";
+        let num28_1 = 2;
+        let num28_2 = "hello";
+        let result28 = num28_1 * num28_2; //NaN
+    </script>
+
+    <!-- 29 положительная и отрицательная бесконечность -->
+    <script>
+        "use strict";
+        let posInf = 4 / 0; //Infinity
+        let negPos = 4 / -0; //-Infinity
+    </script>
+
+    <!-- 30 унарный минус -->
+    <script>
+        "use strict";
+        let num30 = 2; //2
+        let num30 = -num30; //-2
+    </script>
+
+    <!-- 31 типизация в javascript -->
+    <script>
+        "use strict";
+        let value31 = 44;
+        value31 = "Hello";
+        3 + "3" //"33"
     </script>
 </body>
 
