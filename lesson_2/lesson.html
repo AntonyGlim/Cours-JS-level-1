@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        "use strict";
+        // Цикл WHILE
+        let i = 0;
+        while (i < 3) {
+            console.log("Счетчик равен: " + i);
+            i++;
+        }
+    </script>
+
+    <script>
+        "use strict";
+        // Цикл FOR
+        for (let j = 0; j < 10; j++) {
+            console.log("Счетчик равен: " + j);
+        }
+    </script>
+
+    <script>
+        "use strict";
+        // Массивы
+        let users = ["Иван", "Степан", "Артем"];
+        console.log(users[0]);
+        console.log(users[1]);
+        console.log(users[2]);
+        console.log(users[5]); //undefined
+        users[10] = "Игорь"; //в массиве станет 11 элементов
+    </script>
+
+    <script>
+        "use strict";
+        // Объект
+        let user = {};
+        user.name = "Иван";
+        user.age = 40;
+        user.birth = "10.10.1970"
+        console.log(user.name);
+        console.log(user.age);
+        console.log(user.birth);
+        user.id = 1;
+        console.log(user.id);
+    </script>
+
+    <script>
+        "use strict";
+        // Объект
+        user = {};
+        user[name] = "Иван";
+        user[age] = 40;
+        user[birth] = "10.10.1970"
+        console.log(user[name]);
+        console.log(user[age]);
+        console.log(user[birth]);
+        user[id] = 1;
+        console.log(user[id]);
+    </script>
+
+    <script>
+        "use strict";
+        // Разница между массивами и объектами
+        users = ["Иван", "Степан", "Артем"];
+        user = {
+            name: "Иван",
+            age: 24
+        };
+    </script>
+
+    <script>
+        "use strict";
+        // Многомерные массивы
+        let arr = [
+            ["Иван", "Степан", "Артем"],
+            ["Ира", "Сузанна", "Артемида"]
+        ];
+        console.log(arr[1][2]); //"Артемида"
+    </script>
+
+    <script>
+        "use strict";
+        // Массив о-тов
+        let users = [{
+            name: "Иван"
+        }];
+        console.log(users[0].name); //"Иван"
+    </script>
+
+    <script>
+        "use strict";
+        // Итерации по массиву
+        let numbers = [5, 55, 555];
+        for (let i = 0; i < numbers.length; i++) {
+            console.log(numbers[i]);
+        }
+    </script>
+
+    <script>
+        "use strict";
+        // Итерации по массиву и вложенному массиву
+        let valuesOut = [
+            ["0", "00", "000"],
+            ["1", "11", "111"],
+            ["2", "22", "222"],
+        ];
+        for (let i = 0; i < valuesOut.length; i++) {
+            for (let j = 0; j < valuesOut[i].length; j++) {
+                console.log(valuesOut[i][j]);
+            }
+        }
+    </script>
+
+    <script>
+        "use strict";
+        // проверка in
+        let userIn = {
+            name: "Иван"
+        }
+        console.log("name" in userIn); //true
+        console.log("surname" in userIn); //false
+        console.log(userIn.surname === undefined); //true не рекомендуется
+    </script>
+
+    <script>
+        "use strict";
+        // forEach
+        numbers = [1, 2, 3]
+
+        function iterateFn(number, index, numbers) { //от 1 до 3 для forEach
+            console.log(number, index, numbers); // 4-й не добавить
+        }
+        numbers.forEach(iterateFn);
+
+        numbers.forEach(function(number, index, numbers) {
+            console.log(number, index, numbers);
+        });
+
+        numbers.forEach(function(number) {
+            console.log(number);
+        });
+
+        numbers.forEach(number => console.log(number));
+    </script>
+</body>
+
+</html>
