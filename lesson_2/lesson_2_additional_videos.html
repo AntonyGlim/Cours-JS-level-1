@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        //12.0 простая функция
+        "use strict";
+
+        function sayHello() {
+            console.log("Hello!");
+        }
+        sayHello();
+    </script>
+
+
+    <script>
+        //12.1 без параметров
+        "use strict";
+        new Date().getDay();
+
+        function printDayNumber() {
+            let dayNumber = new Date().getDay();
+            let message = null;
+            switch (dayNumber % 2) {
+                case 0:
+                    message = "Четный";
+                    break;
+                case 1:
+                    message = "Не четный";
+                    break;
+            }
+            console.log(message);
+        }
+
+        printDayNumber();
+    </script>
+
+
+    <script>
+        // 12.2.1 возврат результата (1 один return)
+        "use strict";
+
+        function getDayNumber() {
+            let dayNumber = new Date().getDay();
+            let message = null;
+            switch (dayNumber % 2) {
+                case 0:
+                    message = "Четный";
+                    break;
+                case 1:
+                    message = "Не четный";
+                    break;
+            }
+            return message;
+        }
+        let result = getDayNumber();
+        console.log("result : " + result);
+    </script>
+
+
+    <script>
+        //12.2.2 возврат результата (несколько return-ов)
+        "use strict";
+
+        function getDayNumberSeveralReturns() {
+            let dayNumber = new Date().getDay();
+            switch (dayNumber % 2) {
+                case 0:
+                    return "Четный";
+                case 1:
+                    return "Не четный";
+            }
+        }
+        let result_12_2_2 = getDayNumberSeveralReturns();
+        console.log("result_12_2_2 : " + result_12_2_2);
+    </script>
+
+
+    <script>
+        //12.2.3 возврат результата (параметры и прерывание выполнения)
+        "use strict";
+
+        /**
+         * Сумма
+         * @param {number} a пояснение для параметра
+         * @param {number} b пояснение для параметра
+         * 
+         * @return {number} пояснение для параметра
+         */
+        function sum(a, b) {
+            return a + b;
+        }
+        let result_12_2_3 = sum(4, 5);
+        console.log("result_12_2_3 : " + result_12_2_3);
+    </script>
+
+
+    <script>
+        //12.3 несколько функций
+        "use strict";
+        /**
+         * Конвертер рублей
+         * @param {number} rubles величина в рублях
+         * @param {string} currency например "dollar" или "euro"
+         * @throws {Error} если не допустимое currency
+         * @return {number} значение в валюте
+         */
+        function convertCurrency(rubles, currency) {
+            let currencyCoefficient = null;
+            switch (currency) {
+                case "dollar":
+                    currencyCoefficient = 66;
+                    break;
+                case "euro":
+                    currencyCoefficient = 75;
+                    break;
+                default:
+                    throw new Error("Валюта не поддерживается")
+            }
+            return rubles / currencyCoefficient;
+        }
+
+        /**
+         * Округление до сотых
+         * @param {number} num число для округления
+         * @return {number}
+         */
+        function roundToHundreds(num) {
+            return parseInt(num * 100) / 100;
+        }
+
+        let inDollars = convertCurrency(100, "dollar");
+        console.log("Сумма в долларах: " + inDollars); //1.5151515151515151
+        console.log("Сумма в долларах округленная: " + roundToHundreds(inDollars)); //1.51
+    </script>
+
+
+    <script>
+        //12.4 параметры по умолчанию
+        "use strict";
+
+        function printNumber(num = 10) {
+            console.log(num);
+        }
+        printNumber(8); //8
+        printNumber(); //10
+    </script>
+
+
+    <script>
+        //12.5 function declaration
+        "use strict";
+        console.log("Квадрат: " + square(8)); //вызываем раньше
+
+        function square(x) {
+            return x * x;
+        }
+    </script>
+
+
+    <script>
+        //12.6 function expression
+        "use strict";
+        let getSquare = function(x) {
+            return x * x;
+        }
+        console.log("Квадрат: " + getSquare(9)); //Вызов только после
+    </script>
+
+
+    <script>
+        //12.7 не переданный аргумент
+        "use strict";
+
+        function sayHello(name) {
+            console.log("Hello " + name);
+        }
+        sayHello(); //"Hello undefined"
+    </script>
+
+
+    <script>
+        //12.8 если параметров больше
+        "use strict";
+
+        function sayHi(name, ...other) {
+            console.log("Hi " + name);
+            console.log(other);
+        }
+        sayHi("Pit"); //Hi Pit
+        sayHi("Pit", "Bob", "Kity"); //Hi Pit ["Bob", "Kity"]
+    </script>
+
+
+    <script>
+        //12.1 пишите ветвление плоско
+        "use strict";
+        console.log("12.1 пишите ветвление плоско");
+
+        function calculateSquare(num) {
+            if (!num || num == " ") {
+                console.warn(`Вы ничего не передали, num = ${num}`);
+                return;
+            }
+            let operand = Number(num);
+            if (isNaN(num)) {
+                console.warn(`Вы передали не число, num = ${num}`);
+                return;
+            }
+            return operand * operand;
+        }
+        console.log(calculateSquare());
+        console.log(calculateSquare(" "));
+        console.log(calculateSquare("t"));
+        console.log(calculateSquare("4")); //16
+        console.log(calculateSquare(4)); //16
+
+        console.log(" ");
+    </script>
+
+
+    <script>
+        "use strict";
+        console.log("13 стрелочные функции");
+
+        //function declaretion
+        function sum(a, b) {
+            return a + b;
+        }
+        //function expression
+        const printSum = function(a, b) {
+            console.log(a + b);
+        };
+
+        // =>
+        const printSumArrow = (a, b) => console.log(a + b);
+
+        console.log(sum(2, 5)); //7
+        printSum(2, 5); //7
+        printSumArrow(2, 5); //7
+
+        console.log(" ");
+    </script>
+
+
+    <script>
+        "use strict";
+        console.log("14 игра угадай число рекурсия");
+
+        console.log(" ");
+    </script>
+
+
+    <script>
+        "use strict";
+        console.log("15 инкремент декремент");
+        let a = 0;
+        console.log(a++);
+        console.log(++a);
+        console.log(a--);
+        console.log(--a);
+
+        console.log(" ");
+    </script>
+
+
+    <script>
+        "use strict";
+        console.log("16 программа генерации паролей");
+
+        const symbols = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+        }
+
+        function generatePassword(passwordLength) {
+            let password = "";
+            while (password.length < passwordLength) {
+                let symbolPosition = getRandomInt(0, 62);
+                password += symbols.charAt(symbolPosition);
+            }
+            return password;
+        }
+
+        console.log(`password = ${generatePassword(16)}`);
+        console.log(`password = ${generatePassword(8)}`);
+        console.log(`password = ${generatePassword(75)}`);
+
+        console.log(" ");
+    </script>
+
+
+    <script>
+        "use strict";
+        console.log("17 console trace");
+
+        function fa() {
+            console.log("fa");
+            fb();
+        }
+
+        function fb() {
+            console.log("fb");
+            fc();
+        }
+
+        function fc() {
+            console.log("fc");
+            console.trace();
+        }
+
+        fa();
+
+        console.log(" ");
+    </script>
+
+
+    <script>
+        "use strict";
+        console.log("18 поднятие переменной");
+
+        // console.log(param1); //Uncaught ReferenceError: param1 is not defined
+
+        console.log(param2); //undefined
+        var param2 = "Hello";
+        console.log(param2); //Hello
+
+        //console.log(param3); //Uncaught ReferenceError: Cannot access 'param3' before initialization
+        let param3 = "Hello";
+        console.log(param3); //Hello
+
+        function printParam() {
+            console.log(param4); //undefined
+            var param4 = "Hello";
+            console.log(param4); //Hello
+        }
+
+        //const a; //Missing initializer in const declaration
+
+        printParam();
+
+        console.log(" ");
+    </script>
+
+
+    <script>
+        "use strict";
+        console.log("19 перекрытие переменной");
+        let num;
+
+        function printNum(num) {
+            console.log(num);
+        }
+        printNum(120); //120
+        console.log(" ");
+    </script>
+
+
+    <script>
+        "use strict";
+        console.log("20 зачем нужны логические операторы");
+
+        /**
+         * 
+         */
+        function passwoerCorrect(password) {
+            const lengthCorrect = password.length >= 8;
+            const digitsPresent = /\d+/gm.test(password);
+            const symbolsPresent = /[a-zA-Z]+/gm.test(password);
+            return lengthCorrect && digitsPresent && symbolsPresent;
+
+        }
+
+        console.log("Пароль корректен = " + passwoerCorrect("123")); //false
+        console.log("Пароль корректен = " + passwoerCorrect("123asd")); //false
+        console.log("Пароль корректен = " + passwoerCorrect("1234asdq")); //true
+        console.log("Пароль корректен = " + passwoerCorrect("$^&*#(@)_")); //false
+        console.log("Пароль корректен = " + passwoerCorrect("789dsf96a")); //true
+
+        console.log(" ");
+    </script>
+
+
+    <script>
+        console.log("21.1.1 область видимости noKeyword");
+        f = 4;
+        console.log(f); //4
+        console.log(window.f); //4
+        console.log(" ");
+    </script>
+
+
+    <script>
+        console.log("21.1.2 область видимости noKeywordWithFunction");
+
+        function funcR() {
+            aer = 3;
+        }
+
+        funcR();
+        console.log(aer); //3
+        console.log(window.aer); //3
+        console.log(" ");
+    </script>
+
+
+    <script>
+        console.log("21.1.3 область видимости noKeywordWithIf");
+        if (true) {
+            aerf = 2;
+        }
+        console.log(aerf); //2
+        console.log(window.aerf); //2
+        console.log(" ");
+    </script>
+
+
+    <script>
+        "use strict";
+        console.log("21.2.1 область видимости var");
+        var varA = 44;
+        console.log(varA); //44
+        console.log(window.varA); //44
+        console.log(" ");
+    </script>
+
+
+    <script>
+        "use strict";
+        console.log("21.2.2 область видимости varFunction");
+
+        function funcVarR() {
+            var varB = 3;
+            console.log(varB); //3
+        }
+        funcVarR();
+        //console.log(varB); // ошибка
+        console.log(window.varB); //undefined
+
+        console.log(" ");
+    </script>
+
+
+    <script>
+        "use strict";
+        console.log("21.2.3 область видимости varIf");
+        if (true) {
+            var varC = 22;
+        }
+        console.log(varC); // 22
+        console.log(window.varC); //22
+        console.log(" ");
+    </script>
+
+
+    <script>
+        "use strict";
+        console.log("21.3.1 область видимости let");
+        let letA = 77;
+        console.log(letA); // 77
+        console.log(window.letA); //undefined
+        console.log(" ");
+    </script>
+
+
+    <script>
+        "use strict";
+        console.log("21.3.3 область видимости letFunction");
+
+        function funcLetR() {
+            let letB = 3;
+            console.log(varB); //3
+        }
+        //console.log(letB); // ошибка
+        console.log(window.let); //undefined
+        console.log(" ");
+    </script>
+
+
+    <script>
+        "use strict";
+        console.log("21.3.2 область видимости letIf");
+        if (true) {
+            let letC = 333;
+        }
+        //console.log(letC); // ошибка
+        console.log(window.letC); //undefined
+        console.log(" ");
+    </script>
+
+
+    <script>
+        "use strict";
+        console.log("22 сравнение null и undefined");
+        let n = null;
+        let j;
+        console.log(n == j); //true
+        console.log(n === j); //false
+
+        console.log(" ");
+    </script>
+
+
+    <script>
+        "use strict";
+        console.log("23  auto semicolon insertion");
+        let ar = 4 //;
+        let br = "hello" //;
+        let cr =
+            44;
+        let dr = "hi";
+        console.log(" ");
+    </script>
+
+
+    <script>
+        "use strict";
+        console.log("jsdoc для чего это нужно (смотреть не обязательно)");
+        console.log(" ");
+    </script>
+
+
+    <script>
+        "use strict";
+        console.log("Рекурсия (смотреть не обязательно)");
+        console.log(" ");
+    </script>
+
+
+</body>
+
+</html>
