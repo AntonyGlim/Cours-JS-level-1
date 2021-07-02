@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1. С помощью цикла for написать алгоритм для вывода чисел (выводите в консоль, с помощью console.log) 
+        //от 0 до 10 включительно, чтобы результат выглядел так:
+        //0 – это ноль
+        //1 – нечетное число
+        //2 – четное число
+        //3 – нечетное число
+        //…
+        //10 – четное число
+        "use strict";
+        console.log("1. С помощью цикла for написать алгоритм для вывода чисел");
+        for (let i = 0; i <= 10; i++) {
+            if (i == 0) console.log(`${i} - это ноль`);
+            else if (i % 2 == 1) console.log(`${i} - нечетное число`);
+            else console.log(`${i} - четное число`);
+        }
+        console.log(" ");
+    </script>
+
+
+    <script>
+        //2. Выведите в консоль значения, указанные рядом с комментариями
+        "use strict";
+        console.log("2. Выведите в консоль значения, указанные рядом с комментариями");
+        const post = {
+            author: "John", //вывести этот текст
+            postId: 23,
+            comments: [{
+                userId: 10,
+                userName: "Alex",
+                text: "lorem ipsum",
+                rating: {
+                    likes: 10,
+                    dislikes: 2 //вывести это число
+                }
+            }, {
+                userId: 5, //вывести это число
+                userName: "Jane",
+                text: "lorem ipsum 2", //вывести этот текст
+                rating: {
+                    likes: 3,
+                    dislikes: 1
+                }
+            }, ]
+        };
+        console.log("post.author = " + post.author);
+        console.log("post.comments[0].rating.dislikes = " + post.comments[0].rating.dislikes);
+        console.log("post.comments[1].userId = " + post.comments[1].userId);
+        console.log("post.comments[1].text = " + post.comments[1].text);
+
+        console.log(" ");
+    </script>
+
+
+    <script>
+        //3. Перед вами находится массив с продуктами, сегодня распродажа и вам нужно на каждый товар применить скидку 15%, 
+        //можете использовать метод forEach https://mzl.la/1AOMMWX 
+        "use strict";
+        console.log("3. На каждый товар применить скидку 15%");
+        const products = [{
+            id: 3,
+            price: 200,
+        }, {
+            id: 4,
+            price: 900,
+        }, {
+            id: 1,
+            price: 1000,
+        }, ];
+
+        products.forEach(product => console.log(`Старая цена: ${product.price}, цена со скидкой: ${product.price - product.price * 0.15}`));
+
+        console.log(" ");
+    </script>
+
+
+    <script>
+        //4. Перед вами находится массив с продуктами в интернет-магазине. Вам нужно:
+        //1. Получить все товары, у которых есть фотографии, можете использовать метод filter https://mzl.la/2qROQkT
+        //2. Отсортируйте товары по цене (от низкой цены к высокой), можете использовать метод sort
+        //https://mzl.la/2Y79hbZ , как устроен sort можно посмотреть например здесь https://youtu.be/O2pusOp0gC0 или в 
+        //дополнительных видео в материалах урока.
+        "use strict";
+        console.log("4. Фильтровать и сортировать массив");
+        const newProducts = [{
+            id: 3,
+            price: 127,
+            photos: [
+                "1.jpg",
+                "2.jpg",
+            ]
+        }, {
+            id: 5,
+            price: 499,
+            photos: []
+        }, {
+            id: 10,
+            price: 26,
+            photos: [
+                "3.jpg"
+            ]
+        }, {
+            id: 8,
+            price: 78,
+        }, ];
+
+        console.log("Те элементы массива у которых есть фотографии: ");
+        console.log(newProducts.filter(product => "photos" in product && product.photos.length > 0));
+
+        console.log("Массив после сортировки по цене: ");
+        newProducts.sort(function(product1, product2) {
+            return product1.price - product2.price;
+        });
+
+        console.log(newProducts);
+
+        console.log(" ");
+    </script>
+
+
+    <script>
+        //5. (По желанию, т.к. такая особенность практически не используется) Вывести с помощью цикла for числа от 0 до 9, 
+        //НЕ используя тело цикла. То есть выглядеть должно примерно так:
+        //for(…){/* здесь пусто */}
+        //Помните, что в первом, втором и третьем раздела цикла можно не только писать условия, или увеличивать счетчик 
+        //например на 1, допустимы любые выражения, например вызовы функций.
+        "use strict";
+        console.log("5. Вывести с помощью цикла for числа от 0 до 9 НЕ используя тело цикла");
+        for (let i = 0; i < 10; printNumber(i++)) {}
+
+        function printNumber(i) {
+            console.log(i);
+        }
+
+        console.log(" ");
+    </script>
+
+
+    <script>
+        //6. Нарисовать горку с помощью console.log (используя цикл for), как показано на рисунке,
+        //только у вашей горки должно быть 20 рядов, а не 5:
+        //x
+        //xx
+        //xxx
+        //xxxx
+        //xxxxx
+        "use strict";
+        console.log("6. Нарисовать горку ");
+        let x = "x";
+        for (let i = 0; i < 20; i++) {
+            console.log(x);
+            x += "x";
+        }
+        console.log(" ");
+    </script>
+</body>
+
+</html>
