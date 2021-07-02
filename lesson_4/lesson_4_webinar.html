@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //
+        "use strict";
+        const testObject1 = {
+            author1: "Erik",
+            printAuthor: function() {
+                console.log("author1 = " + this.author1);
+            }
+        }
+        testObject1.printAuthor();
+    </script>
+
+    <script>
+        //Конструктор
+        "use strict";
+
+        function Post(auth2, text2) {
+            this.auth2 = auth2;
+            this.text2 = text2;
+        }
+
+        const post1 = new Post("Конан", "Текст");
+        console.log(post1.auth2);
+        console.log(post1.text2);
+    </script>
+
+    <script>
+        // Цепочка прототиаов
+        "use strict";
+        let transport = {
+            year: 2021
+        }
+
+        function Car(model, color) {
+            this.model = model;
+            this.color = color;
+        }
+
+        Car.prototype = transport;
+
+        const car1 = new Car("Ford", "Blue");
+        const car2 = new Car("Toyota", "Red");
+
+        console.log(car1.year);
+    </script>
+    <script>
+        //Правильно переносить фу-ыи в прототип
+        "use strict";
+    </script>
+    <script>
+        //
+        "use strict";
+    </script>
+    <script>
+        //Свойство конструктор
+        "use strict";
+
+        function User(age) {
+            this.age = age;
+        }
+
+        const user1 = new User(25);
+        console.log(user1.constructor);
+        const user2 = user1.constructor(30);
+        console.log(user2.constructor);
+    </script>
+    <script>
+        //
+        "use strict";
+    </script>
+    <script>
+        //
+        "use strict";
+    </script>
+</body>
+
+</html>
