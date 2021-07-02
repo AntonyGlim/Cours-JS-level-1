@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <script>
+        //1. Объясните почему код даёт именно такие результаты?
+        "use strict";
+
+        //пример 1
+        let a = 1, //инициализируется a, a == 1
+            b = 1, //инициализируется b, b == 1
+            c, d; // c и d не инициализируются они равны undefined
+        c = ++a; // c присваивается значение a предварительно инкрементированного
+        alert(c); // ответ: 2
+
+        //пример 2
+        d = b++; // d присваивается значение b = 1 b и только после этого происходит изменение b
+        alert(d); //ответ: 1
+
+        //пример 3
+        c = 2 + ++a; // происходит изменение a = 3, затем прибавляется 2
+        alert(c); //ответ: 5
+
+        //пример 4
+        d = 2 + b++; // к 2 прибавляется b = 2, затем b увеличивается
+        alert(d); //ответ: 4
+        alert(a); //3
+        alert(b); //3
+    </script> -->
+
+
+    <script>
+        //Чему будут равны переменные x и aa в примере ниже? Написать почему так произошло 
+        //(описать последовательность действий).
+        "use strict";
+
+        let aa = 2;
+        let x = 1 + (aa *= 2); //5
+        //1. Выполняется действие в скобках aa = aa * 2 = 4;
+        //2. x = 1 + (4) = 5;
+    </script>
+
+
+    <script>
+        // 3. Объявить две переменные a и b и задать им целочисленные произвольные начальные значения. 
+        // Затем написать скрипт, который работает по следующему принципу: 
+        // - если a и b положительные, вывести их разность (ноль можно считать положительным числом);
+        // - если а и b отрицательные, вывести их произведение; 
+        // - * (этот пункт по сложнее, делайте по желанию) если а и b разных знаков, вывести их сумму;
+        "use strict";
+
+        function func(a, b) {
+            if (a >= 0 && b >= 0) {
+                console.log(`${a} и ${b} положительные`);
+                return a - b;
+            } else if (a < 0 && b < 0) {
+                console.log(`${a} и ${b} отрицательные`);
+                return a * b;
+            } else {
+                console.log(`${a} и ${b} разных знаков`);
+                return a + b;
+            }
+        }
+        console.log(func(1, 1));
+        console.log(func(1, 0));
+        console.log(func(1, -1));
+        console.log(func(-1, 1));
+        console.log(func(-1, 0));
+        console.log(func(-1, -1));
+    </script>
+
+
+    <script>
+        // 4. Реализовать основные 4 арифметические операции (+, -, /, *) в виде функций с двумя 
+        // параметрами. Т.е. например, функция для сложения должна принимать два числа, 
+        // складывать их и возвращать результат.
+        // Обязательно использовать оператор return.
+        "use strict";
+
+        /**
+         * Сложение
+         */
+        function sum(a, b) {
+            let result = a + b;
+            console.log(`Сложение ${a} и ${b} = ${result}`);
+            return result;
+        }
+
+        /**
+         * Вычитание
+         */
+        function sub(a, b) {
+            let result = a - b;
+            console.log(`Вычитание ${a} и ${b} = ${result}`);
+            return result;
+        }
+
+        /**
+         * Произведение
+         */
+        function comp(a, b) {
+            let result = a * b;
+            console.log(`Произведение ${a} и ${b} = ${result}`);
+            return result;
+        }
+
+        /**
+         * Деление
+         */
+        function div(a, b) {
+            let result = a / b;
+            console.log(`Деление ${a} и ${b} = ${result}`);
+            return result;
+        }
+
+        let num1 = 2;
+        let num2 = 5;
+
+        sum(num1, num2);
+        sub(num1, num2);
+        comp(num1, num2);
+        div(num1, num2);
+    </script>
+
+
+    <script>
+        //5. Реализовать функцию с тремя параметрами: function mathOperation(arg1, arg2, operation),
+        // где arg1, arg2 – значения аргументов, operation – строка с названием операции. В зависимости от
+        // переданного значения операции (использовать switch) выполнить одну из арифметических операций
+        // (использовать функции из задания 4) и вернуть полученное значение
+        "use strict";
+
+        function mathOperation(arg1, arg2, operation) {
+            switch (operation) {
+                case "Сложение":
+                    sum(arg1, arg2);
+                    break;
+                case "Вычитание":
+                    sub(arg1, arg2);
+                    break;
+                case "Произведение":
+                    comp(arg1, arg2);
+                    break;
+                case "Деление":
+                    div(arg1, arg2);
+                    break;
+            }
+        }
+
+        mathOperation(6, 7, "Сложение");
+        mathOperation(6, 7, "Вычитание");
+        mathOperation(6, 7, "Произведение");
+        mathOperation(6, 7, "Деление");
+    </script>
+
+
+
+</body>
+
+</html>
