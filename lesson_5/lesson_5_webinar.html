@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>
+        <p>
+            <button>Кнопка 2</button>
+        </p>
+    </div>
+
+    <button>Кнопка</button>
+
+
+
+    <script>
+        "use strict";
+        console.dir(document); //window.document - но так не пишут
+
+        //найти по id
+        let one = document.getElementById("one");
+        let paragraf = document.getElementsByTagName("p");
+        let classItem = document.getElementsByClassName("");
+        //let classItem = document.querySelectorAll("form[action]");
+
+        document.body;
+        document.forms; //вернет все формы
+        document.head; //можно подгрузить что-то
+        document.images;
+        document.links;
+
+        //Работа с узлами
+
+        //Работа с текстом
+        let div = document.querySelector("div");
+        div.innerText;
+        div.textContent;
+
+        //создание и удаление элементов
+        let par = document.createElement("p");
+        par.innerText = "Новый текст";
+        document.body.appendChild(par);
+        //document.body.insertBefore(div);
+
+        //замена
+        //document.parentNode.replaceChild(one, two);
+
+        //Работа с атрибутами, и с классами, добавить, убрать
+
+
+        // События
+
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("Загружены тэги");
+        });
+        window.addEventListener('load', function() {
+            console.log("Все загружено");
+        });
+
+        function clickHandler(event) {
+            console.log("Клик!!");
+            console.dir(event);
+        }
+
+        // События мыши
+        let button = document.querySelector("button");
+        button.addEventListener("click", clickHandler);
+
+        button.addEventListener("mouseover", function(event) {
+            console.log("НАВЕЛИ!!");
+        });
+
+        window.addEventListener('keydown', function(event) {
+            console.log("ЖИМ!!");
+            console.dir(event);
+        })
+
+        //всплытие события. Клик движется:
+        //button -> p -> div -> body -> html
+
+        //чтобы событие не всплывало:
+        //event.stopPropagation();
+
+        //Удалить обработчик события
+        button.removeEventListener("mouseover", clickHandler);
+
+        //функция с таймаутом
+        setTimeout(function() {
+            console.log("Hello")
+        }, 3000);
+
+        //события на динамически добавленном элементе
+        //(по всплытию события)
+        //для того, чтобы вычлинить нужные нам - можно по классу
+
+        //добавление стилей
+    </script>
+
+    <p id="one"></p>
+
+
+
+
+</body>
+
+</html>
