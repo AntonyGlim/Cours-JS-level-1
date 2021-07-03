@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        "use strict"; {
+            console.log("1 сравнение по значению и по ссылке");
+            let arr1 = [1, 2, 3];
+            let arr2 = [1, 2, 3];
+            console.log(arr1 === arr2); //false
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("2 instanceof");
+
+            function User() {}
+            let user = new User();
+            console.log(user instanceof User); //true
+
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("3.1 примеры наследования - типы на es5 и es6");
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("3.2 примеры наследования - механика наследования");
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("3.3 примеры наследования - сборщик письма");
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("3.4 примеры наследования - шифровальщик");
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("1 esNextClassProps");
+            class Person {
+                name = "Alex";
+                age = 25;
+            }
+            let person = new Person();
+            console.log(person);
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("2 return в конструкторе игнорируется для простых типов");
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("3 this отсутствует в обычной функции");
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("4 getter");
+            class Person {
+                constructor(name, age) {
+                    this.name = name;
+                    this.age = age;
+                }
+
+                get nameWith() {
+                    return this.name + "!";
+                }
+
+            }
+            let person = new Person("Alex", 25);
+            console.log(person.nameWith);
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("5 setter");
+            class Person {
+                constructor(name, age) {
+                    this.name = name;
+                    this.age = age;
+                }
+
+                set newName(name) {
+                    this.name = name;
+                }
+
+            }
+            let person = new Person("Alex", 25);
+            person.name = "Jhon";
+            console.log(person);
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("6 возможные ошибки с геттерами и сеттерами");
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("7 статические свойства и методы");
+            class Person {
+                constructor(name, age) {
+                    this.name = name;
+                    this.age = age;
+                }
+                static param = 20;
+            }
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("8 для чего нужны функции-конструкторы");
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("9 игра бродилка");
+            console.log(" ");
+        }
+    </script>
+</body>
+
+</html>
