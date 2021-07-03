@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        "use strict"; {
+            console.log("1 doWhile");
+            let i = 2;
+            do {
+                console.log("Условие : while (i < 1), i = " + i);
+            } while (i < 1);
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("2 посмотреть прототип");
+
+            console.log("Прототип массива: ");
+            const arr = [3, 33, 333];
+            console.log(arr.__proto__);
+            console.log(Object.getPrototypeOf(arr));
+
+            console.log("Прототип даты: ");
+            const date = new Date();
+            console.log(Object.getPrototypeOf(date));
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("3 перечислимые и не перечислимые свойства");
+            let arr = ["one", "two"];
+            console.log("arr.propertyIsEnumerable('length') : " + arr.propertyIsEnumerable('length'));
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("4 посмотреть собственные свойства объекта или массива");
+            const arr = [3, 33, 333];
+            console.log("Object.getOwnPropertyNames(arr) : ");
+            console.log(Object.getOwnPropertyNames(arr));
+            console.log(" ");
+        }
+    </script>
+
+    <script>
+        "use strict"; {
+            console.log("5 получение всех свойств объекта и его прототипов");
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("6 bulls and cows");
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("7 остаток от деления");
+            console.log("5 % 2 = " + (5 % 2));
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("10.1.1 Методы массивов - pop");
+            const arr = [3, 33, 333];
+            console.log("arr : " + arr);
+            console.log("arr.pop() : " + arr.pop());
+            console.log("arr : " + arr);
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("10.1.2 Методы массивов - push");
+            const arr = [3, 33, 333];
+            console.log("arr : " + arr);
+            console.log("arr.push() (new length) : " + arr.push(3333));
+            console.log("arr : " + arr);
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("10.1.3 Методы массивов - shift");
+            const arr = [3, 33, 333];
+            console.log("arr : " + arr);
+            console.log("arr.shift() : " + arr.shift());
+            console.log("arr : " + arr);
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("10.1.4 Методы массивов - unshift");
+            const arr = [3, 33, 333];
+            console.log("arr : " + arr);
+            console.log("arr.unshift() (new length) : " + arr.unshift(3333));
+            console.log("arr : " + arr);
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("10.1.5 Методы массивов - filter");
+            const arr = ["Фр", "Фе", "Ва", "Фу"];
+            console.log("arr : " + arr);
+            const filteredArr = arr.filter(function(element) {
+                return element.charAt(0) == "Ф";
+            })
+            console.log("filteredArr : " + filteredArr);
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("10.1.6 Методы массивов - find");
+            const arr = [3, 33, 333];
+            console.log("arr : " + arr);
+            let num = arr.find(function(element) {
+                return element == 3;
+            })
+            console.log("num : " + num);
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("10.1.7 Методы массивов - includes");
+            const arr = [3, 33, 333];
+            console.log("arr : " + arr);
+            console.log("arr.includes(3) : " + arr.includes(3));
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("10.2.1 Примеры с методами массивов - макс. число с forEach (new)");
+            const arr = [3, 33, 333];
+            console.log("arr : " + arr);
+            let max = arr[0];
+            arr.forEach(function(element) {
+                if (element > max) max = element;
+            })
+            console.log("max : " + max)
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("10.2.2 Примеры с методами массивов - map числа увеличенные на 10");
+            const arr = [3, 33, 333];
+            console.log("arr : " + arr);
+            const newArr = arr.map(element => element * 10);
+            console.log("newArr : " + newArr);
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("10.2.3 Примеры с методами массивов - map appeal");
+            let users = [{
+                name: "Ghon",
+                gender: "male"
+            }, {
+                name: "Jack",
+                gender: "male"
+            }, {
+                name: "Lili",
+                gender: "female"
+            }, ]
+            console.log(users);
+
+            let newUsers = users.map(function(user) {
+                if (user.gender == "male") return Object.assign({}, user, {
+                    appeal: "Mr"
+                });
+                else return Object.assign({}, user, {
+                    appeal: "Mrs"
+                });
+            });
+            console.log(newUsers);
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("10.2.4 Примеры с методами массивов - slice");
+            const arr = [3, 33, 333];
+            console.log("arr : " + arr);
+            console.log("arr.slice(0, 1) : " + arr.slice(0, 1));
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("10.2.5 Примеры с методами массивов - первая буква каждого слова заглавная");
+            let simpleString = "Lorem ipsum dolor sit amet";
+            let words = simpleString.split(" ");
+            console.log("BEFORE : " + simpleString);
+            console.log("words : " + words);
+            let result = words.map(function(word) {
+                let symbols = word.split("");
+                symbols[0] = symbols[0].toUpperCase();
+                return symbols.join("");
+            });
+            console.log("result : " + result);
+            console.log("AFTER : " + result.join(" "));
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("10.2.6 Примеры с методами массивов - пересечение");
+            let numbers1 = [111, 222, 333];
+            let numbers2 = [555, 444, 333];
+            console.log("numbers1 : " + numbers1);
+            console.log("numbers2 : " + numbers2);
+            let intersections = numbers1.filter(number => numbers2.includes(number));
+            console.log("intersections : " + intersections);
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("11 передача по ссылке");
+
+            console.log("Простой тип (еще раз выделяется память)");
+            let user1 = "Alex";
+            let user2 = user1; //еще раз выделилась память
+            user1 = "Jhon";
+            console.log("user1 " + user1); //Jhon
+            console.log("user2 " + user2); //Alex
+
+            console.log("Сложный тип (копируется по ссылке)");
+            let numbers1 = [111, 222, 333];
+            let numbers2 = numbers1; //сложный тип копируется по ссылке
+            numbers1[2] = 55555;
+            console.log(numbers1); //[111, 222, 55555]
+            console.log(numbers2); //[111, 222, 55555]
+
+            console.log("Простой тип передача в ф-ыю (еще раз выделяется память)");
+            let name = "Alex";
+            console.log(name); //Alex
+
+            function changeName(value) {
+                value = "new name";
+            }
+            changeName(name); //Alex
+            console.log(name);
+
+            console.log("Сложный тип передача в ф-ыю (копируется по ссылке)");
+            let words = ["111", "222", "333"];
+            console.log("words : " + words); //111,222,333
+
+            function changeArray(arr) {
+                arr[0] = "0";
+            }
+            changeArray(words);
+            console.log("words : " + words); //0,222,333
+
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("12.2 forIn");
+            let user = {
+                id: 1,
+                age: 25,
+                name: "Alex"
+            }
+            for (const property in user) {
+                console.log(user[property]);
+            }
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("13 forOf");
+            let numbers = [111, 222, 333];
+            for (const number of numbers) {
+                console.log(number);
+            }
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("14 как работает метод sort");
+
+            console.log("Сортировка без функции (по юникоду)");
+            let alphabet = ["D", "A", "C", "B"];
+            console.log(alphabet);
+            alphabet.sort();
+            console.log(alphabet);
+
+            console.log(" ");
+        }
+    </script>
+    "Lorem" "ipsum" "dolor" "sit" "amet"
+</body>
+
+</html>
