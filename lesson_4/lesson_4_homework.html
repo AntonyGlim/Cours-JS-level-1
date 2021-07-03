@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        "use strict"; {
+            console.log("1. Написать функцию, преобразующую число в объект");
+
+            function convertNumberToObject(num) {
+                console.log("num = " + num);
+                if (!num || isNaN(num) || num < 0 || num > 999 || !Number.isInteger(num)) {
+                    console.log("Преобразование не возможно");
+                    return {};
+                }
+                let numAsArray = num.toString().split("").reverse();
+                let result = {
+                    units: !numAsArray[0] ? 0 : parseInt(numAsArray[0]), //единицы
+                    tens: !numAsArray[1] ? 0 : parseInt(numAsArray[1]), //десятки
+                    hundreds: !numAsArray[2] ? 0 : parseInt(numAsArray[2]), //сотни
+                };
+                return result;
+            }
+
+            console.log(convertNumberToObject(1));
+            console.log(convertNumberToObject(12));
+            console.log(convertNumberToObject(123));
+
+            console.log(convertNumberToObject("4re"));
+            console.log(convertNumberToObject(""));
+            console.log(convertNumberToObject());
+
+            console.log(convertNumberToObject(-1));
+            console.log(convertNumberToObject(1000));
+            console.log(convertNumberToObject(2.5));
+
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("1.1 Сделайте в стиле es5, а затем в стиле es6 конструктор Product, который принимает параметры name и price");
+
+            console.log("es5");
+
+            function ProductES5(name, price) {
+                this.name = name;
+                this.price = price;
+            }
+            ProductES5.prototype.make25PercentDiscount = function() {
+                return this.price * 0.75;
+            }
+            let productES5 = new ProductES5("ProductES5", 100);
+            console.log("Старая цена: " + productES5.price);
+            console.log("Цена с учетом скидки: " + productES5.make25PercentDiscount());
+
+            console.log("es6");
+
+            class ProductES6 {
+                constructor(name, price) {
+                    this.name = name;
+                    this.price = price;
+                }
+
+                make25PercentDiscount() {
+                    return this.price * 0.75;
+                }
+            }
+            let productES6 = new ProductES6("ProductES6", 100);
+            console.log("Старая цена: " + productES6.price);
+            console.log("Цена с учетом скидки: " + productES6.make25PercentDiscount());
+
+            console.log(" ");
+
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("1.2 Сделайте в стиле es5, а затем в стиле es6) конструктор Post, который принимает параметры author, text, date");
+
+            console.log("es5");
+
+            function PostES5(author, text, date) {
+                this.author = author;
+                this.text = text;
+                this.date = date;
+            }
+
+            PostES5.prototype.edit = function(text) {
+                this.text = text;
+            }
+
+            function AttachedPostES5(author, text, date) {
+                PostES5.call(this, author, text, date);
+                this.highlighted = false;
+            }
+
+            AttachedPostES5.prototype = Object.create(PostES5.prototype);
+            AttachedPostES5.prototype.constructor = AttachedPostES5;
+
+            AttachedPostES5.prototype.makeTextHighlighted = function() {
+                this.highlighted = true;
+            }
+
+            let attachedPostES5 = new AttachedPostES5("Alex", "Lorem ipsum", new Date());
+            console.log(attachedPostES5);
+            attachedPostES5.edit("New text");
+            attachedPostES5.makeTextHighlighted();
+            console.log(attachedPostES5);
+
+            console.log("es6");
+
+            class PostES6 {
+                constructor(author, text, date) {
+                    this.author = author;
+                    this.text = text;
+                    this.date = date;
+                }
+                edit(text) {
+                    this.text = text;
+                }
+            }
+
+            class AttachedPostES6 extends PostES6 {
+                constructor(author, text, date) {
+                    super(author, text, date);
+                    this.highlighted = false;
+                }
+                makeTextHighlighted() {
+                    this.highlighted = true;
+                }
+            }
+
+            let attachedPostES6 = new AttachedPostES6("Alex", "Lorem ipsum", new Date());
+            console.log(attachedPostES6);
+            attachedPostES6.edit("New text");
+            attachedPostES6.makeTextHighlighted();
+            console.log(attachedPostES6);
+
+            console.log(" ");
+        }
+    </script>
+
+</body>
+
+</html>
