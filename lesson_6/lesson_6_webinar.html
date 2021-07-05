@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        "use strict"; {
+            console.log("contextmenu");
+            document.addEventListener("contextmenu", function(event) {
+                console.log("right click");
+                //event.preventDefault(); //событие формы -  не выполнится (сбросится)
+            });
+            console.log(" ");
+        }
+    </script>
+    <div>Lorem ipsum dolor sit.</div>
+    <script>
+        "use strict"; {
+            console.log("copy");
+            document.addEventListener("copy", function(event) {
+                console.log("copy");
+                let text = document.getSelection().toString();
+                event.clipboardData.setData("text/plain", text + " - бла бла")
+                event.preventDefault();
+            });
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("cut");
+            document.addEventListener("cut", function(event) {
+                console.log("cut");
+                let selection = document.getSelection();
+                event.clipboardData.setData("text/plain", selection.toString().toUpperCase());
+                selection.deleteFromDocument();
+                event.preventDefault();
+            });
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("dblclick");
+            document.addEventListener("dblclick", function(event) {
+                console.log("dblclick");
+            });
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("resize");
+            window.addEventListener("resize", function(event) {
+                console.log(event.target.innerWidth, event.target.innerHeight);
+                // Важно чтобы был включон тэг в header: 
+                // <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            });
+            console.log(" ");
+        }
+    </script>
+    <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem porro ratione ea dicta rem, distinctio cumque iste ab rerum perferendis sunt perspiciatis delectus eligendi, totam nostrum culpa exercitationem? Repellat ad nisi sunt explicabo ducimus
+        sint est asperiores eaque sapiente dicta et soluta necessitatibus, magni enim? Molestias laboriosam nulla, quasi nobis ut corrupti dicta, placeat voluptatum sint necessitatibus tempora veritatis, explicabo dolorum doloribus totam excepturi. Aut
+        quisquam nisi asperiores nostrum neque quae rem aliquid autem exercitationem? Possimus assumenda veritatis neque officia rem omnis perspiciatis dolores obcaecati temporibus quae corporis est ex doloremque fugit porro quas ad, recusandae, modi
+        harum incidunt animi.</div>
+    <script>
+        "use strict"; {
+            console.log("scroll - Для анимации");
+            window.addEventListener("scroll", function(event) {
+                console.log(window.pageYOffset);
+            });
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("Видеоплеер");
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("событие формы - blur");
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("событие формы - change");
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("событие формы - input");
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("событие формы - focus");
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("событие формы - reset очистка");
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("событие формы - submit");
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("Слайдер");
+            console.log(" ");
+        }
+    </script>
+
+</body>
+
+</html>
