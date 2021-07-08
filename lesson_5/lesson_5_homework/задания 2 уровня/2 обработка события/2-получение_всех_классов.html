@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <p class="first second third">
         Lorem ipsum dolor sit.
@@ -18,5 +20,20 @@
     3. Переберите с помощью forEach event.target.classList и выведите каждый класс
     в консоль.
     -->
+    <script>
+        "use strict"; {
+            let p = document.querySelector("p[class='first second third']");
+            p.addEventListener("click", (event) => {
+                let classList = event.target.classList;
+                console.log(`event.target.classList = ${classList}`);
+                for (const clazz of classList) {
+                    console.log(clazz);
+                }
+            })
+            console.log("");
+        }
+    </script>
+
 </body>
+
 </html>

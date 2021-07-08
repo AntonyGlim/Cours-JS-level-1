@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+
     <div class="product">
-        <span class="productName">Товар 1</span>
-        Описание товара
+        <span class="productName">Товар 1</span> Описание товара
     </div>
 
     <!-- 
@@ -22,6 +23,16 @@
     <div>Другое описание</div>
     для этого вышеописанную разметку пишите в виде строки в innerHTML.
     -->
+    <script>
+        "use strict"; {
+            let element = document.querySelector("div[class='product']");
+            element.addEventListener("click", (event) => {
+                event.target.innerHTML = "<div>Другой товар</div><div>Другое описание</div>";
+            });
+            console.log("");
+        }
+    </script>
 
 </body>
+
 </html>
