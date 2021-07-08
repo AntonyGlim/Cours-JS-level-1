@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
         }
     </style>
 </head>
+
 <body>
     <img src="https://placeimg.com/1000/1000/animals" alt="">
     <img src="https://placeimg.com/1000/1000/arch" alt="">
@@ -21,9 +23,15 @@
 
     <!-- Задание. Дождитесь когда все картинки загрузятся (событие load) и
     покажите с помощью alert сообщение: "все картинки загружены". -->
-
     <script>
-        
+        "use strict"; {
+            window.addEventListener('load', (e) => {
+                alert("все картинки загружены");
+            });
+            console.log("");
+        }
     </script>
+
 </body>
+
 </html>
