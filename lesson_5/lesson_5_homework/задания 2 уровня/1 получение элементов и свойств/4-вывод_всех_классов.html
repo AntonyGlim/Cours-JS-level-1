@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <div class="one two three"></div>
 
@@ -14,9 +16,17 @@
     2. Создайте переменную classes, и в нее сохраните значение свойства classList.
     3. C помощью forEach переберите classes и выведите каждый класс в консоль.
      -->
-
     <script>
-        
+        "use strict"; {
+            let element = document.querySelector("div");
+            let classes = element.classList;
+            for (let clazz of classes) {
+                console.log(clazz);
+            }
+            console.log("");
+        }
     </script>
+
 </body>
+
 </html>

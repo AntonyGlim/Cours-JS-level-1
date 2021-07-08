@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <div class="product hidden"></div>
 
@@ -13,5 +15,15 @@
     2. Затем обратитесь к списку классов и с помощью метода contains()
     проверьте есть ли класс hidden у этого тега.
      -->
+    <script>
+        "use strict"; {
+            let element = document.querySelector("div");
+            let classes = element.classList;
+            console.log("contains hidden : " + classes.contains("hidden"));
+            console.log("");
+        }
+    </script>
+
 </body>
+
 </html>

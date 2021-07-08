@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <img src="https://placeimg.com/100/100/animals" alt="">
     <img src="https://placeimg.com/100/100/arch" alt="">
@@ -16,5 +18,15 @@
     и выведите каждую картинку в консоль. Выведите в консоль только
 	элементы коллекции, не нужно пытаться сделать, чтобы в консоли
 	появилось изображение. -->
+    <script>
+        "use strict"; {
+            let imgs = document.getElementsByTagName("img");
+            for (let img of imgs) {
+                console.log(img);
+            }
+            console.log("");
+        }
+    </script>
 </body>
+
 </html>
