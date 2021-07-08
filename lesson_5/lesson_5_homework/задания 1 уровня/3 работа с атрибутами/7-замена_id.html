@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <article>
         <h2>title</h2>
@@ -17,5 +19,15 @@
 
     <!-- Задание. найдите заголовок с id="title" и замените значение id
     на что-то другое. -->
+    <script>
+        "use strict"; {
+            let element = document.querySelector("h2[id='title']");
+            element.setAttribute("id", "что-то другое");
+            console.log("id = " + element.getAttribute('id'));
+            console.log("");
+        }
+    </script>
+
 </body>
+
 </html>

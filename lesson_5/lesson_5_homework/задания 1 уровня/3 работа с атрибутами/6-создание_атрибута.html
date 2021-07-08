@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h1>Заголовок</h1>
 
     <!-- Задание. Добавьте заголовку атрибут data-one="один" и атрибут
     data-two="два" с помощью метода setAttribute. -->
-
     <script>
-
+        "use strict"; {
+            let element = document.querySelector("h1");
+            element.setAttribute("data-one", "один");
+            element.setAttribute("data-two", "два");
+            console.log("data-one = " + element.getAttribute('data-one'));
+            console.log("data-two = " + element.getAttribute('data-two'));
+            console.log("");
+        }
     </script>
+
 </body>
+
 </html>

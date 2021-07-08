@@ -14,10 +14,15 @@
 
     <!-- Задание. Выведите в консоль значение атрибутов data-dismiss
     и aria-label с помощью метода getAttribute. -->
-
     <script>
-        
+        "use strict"; {
+            let element = document.querySelector(".close");
+            console.log("data-dismiss = " + element.getAttribute('data-dismiss'));
+            console.log("aria-label = " + element.getAttribute('aria-label'));
+            console.log("");
+        }
     </script>
+
 </body>
 
 </html>
