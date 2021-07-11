@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,11 +10,13 @@
         i {
             font-size: 50px;
         }
+        
         .golden {
             color: gold;
         }
     </style>
 </head>
+
 <body>
     <i id="first" class="fas fa-star"></i>
     <i id="second" class="fas fa-star"></i>
@@ -39,15 +42,31 @@
 
         let goldenClass = 'golden';
 
-        firstStar.addEventListener('mouseover', function() {
-            if (!firstStar.classList.contains('goldenClass')) {
-                firstStar.classList.add(goldenClass);
+        function addGoldenClass(element) {
+            if (!element.classList.contains('goldenClass')) {
+                element.classList.add(goldenClass);
             }
-        });
+            let previousElement = element.previousElementSibling;
+            if (previousElement != null) {
+                addGoldenClass(previousElement);
+            }
+        }
 
-        firstStar.addEventListener('mouseout', function() {
-            firstStar.classList.remove(goldenClass);
-        });
+        function removeGoldenClass(element) {
+            element.classList.remove(goldenClass);
+            let previousElement = element.previousElementSibling;
+            if (previousElement != null) {
+                removeGoldenClass(previousElement);
+            }
+        }
+
+        let stars = document.querySelectorAll("i");
+        for (const star of stars) {
+            star.addEventListener('mouseover', () => addGoldenClass(star));
+            star.addEventListener('mouseout', () => removeGoldenClass(star));
+        }
     </script>
+
 </body>
+
 </html>
