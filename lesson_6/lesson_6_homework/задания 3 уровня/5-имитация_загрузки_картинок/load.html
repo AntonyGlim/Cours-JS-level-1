@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="products">
         <div class="product">
@@ -41,7 +43,18 @@
     -->
 
     <script>
-        
+        "use strict";
+
+        function fn() {
+            let imgs = document.querySelectorAll("img");
+            let counter = 1;
+            for (const img of imgs) {
+                img.setAttribute("src", "images/" + counter++ + ".jpg")
+            }
+        }
+
+        setTimeout(fn, 3000);
     </script>
 </body>
+
 </html>
