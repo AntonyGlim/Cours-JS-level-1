@@ -1,8 +1,8 @@
 'use strict';
 const texts = {
-    text1: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-    text2: 'Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты.',
-    text3: 'Проснувшись однажды утром после беспокойного сна, Грегор Замза обнаружил.'
+    text1: '1. Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+    text2: '2. Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты.',
+    text3: '3. Проснувшись однажды утром после беспокойного сна, Грегор Замза обнаружил.'
 };
 
 /* 
@@ -11,7 +11,12 @@ const texts = {
     2.1 Переберите полученную коллекцию, например с помощью forEach, и каждой ссылке назначьте
     обработчик клика функцию clickHandler.
 */
+let text = document.querySelector("div.text");
+let navLinks = document.querySelectorAll("a.nav-link");
 
+for (const navLink of navLinks) {
+    navLink.addEventListener("click", clickHandler);
+}
 
 /**
  * Обработчик клика по .nav-link
@@ -20,7 +25,8 @@ const texts = {
 function clickHandler(event) {
     // здесь вызывайте changeText и changeActiveClass, и передавайте
     // им объект события.
-   
+    changeText(event);
+    changeActiveClass(event);
 }
 
 /**
@@ -29,7 +35,11 @@ function clickHandler(event) {
  * @param {MouseEvent} event 
  */
 function changeActiveClass(event) {
-    
+    for (const navLink of navLinks) {
+        navLink.classList.remove("active");
+    }
+    event.target.classList.add("active");
+
 }
 
 /**
@@ -39,5 +49,16 @@ function changeActiveClass(event) {
  * @param {MouseEvent} event 
  */
 function changeText(event) {
-    
+    let navLinkInnerText = event.target.textContent;
+    switch (navLinkInnerText) {
+        case "Link 1":
+            text.innerText = texts.text1;
+            break;
+        case "Link 2":
+            text.innerText = texts.text2;
+            break;
+        case "Link 3":
+            text.innerText = texts.text3;
+            break;
+    }
 }
