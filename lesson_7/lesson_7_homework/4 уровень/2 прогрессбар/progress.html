@@ -17,6 +17,7 @@
     -->
 
     <script>
+        "use strict";
         let div = document.querySelector('div');
 
         /**
@@ -35,8 +36,9 @@
         можете также добавить какой-нибудь коэффициент, чтобы подобрать желаемую скорость
         заполнения прогресс-бара.
         */
-        
-
+        for (let i = 0; i <= 100; i++) {
+            setTimeout(() => changeProgress(i), i * 100);
+        }
     </script>
 </body>
 

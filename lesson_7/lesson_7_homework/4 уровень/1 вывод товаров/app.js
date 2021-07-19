@@ -11,8 +11,7 @@
 */
 
 const products = {
-    phones: [
-        {
+    phones: [{
             id: 1,
             name: "Смартфон 1",
             price: "23,99 р.",
@@ -32,8 +31,7 @@ const products = {
         },
     ],
 
-    tablets: [
-        {
+    tablets: [{
             id: 4,
             name: "Планшет 4",
             price: "99,99 р.",
@@ -47,8 +45,7 @@ const products = {
         },
     ],
 
-    tv: [
-        {
+    tv: [{
             id: 6,
             name: "Телевизор 6",
             price: "199,99 р.",
@@ -82,10 +79,12 @@ const products = {
  */
 function clickHandler(event) {
     //вам нужно очищать содержимое .products
-    
+    divProducts.innerHTML = "";
+
     //в showCategory надо передать строку с типом категории, тип берите
     //из атрибута data-type у кнопки, по которой кликнули.
-    
+    let category = event.target.getAttribute("data-type");
+    showCategory(category);
 }
 
 /**
@@ -96,7 +95,21 @@ function clickHandler(event) {
  * по которой кликнули.
  */
 function showCategory(category) {
-    
+    let array = null;
+    switch (category) {
+        case "phones":
+            array = products.phones;
+            break;
+        case "tablets":
+            array = products.tablets;
+            break;
+        case "tv":
+            array = products.tv;
+            break;
+    }
+    for (const product of array) {
+        divProducts.insertAdjacentHTML('beforeend', getProductMarkup(product));
+    }
 }
 
 /**
@@ -109,5 +122,17 @@ function showCategory(category) {
  * в верху этого файла.
  */
 function getProductMarkup(product) {
+    return `<div class="product">` +
+        `<div>${product.name}</div>` +
+        `<img src="${product.imageUrl}" alt="">` +
+        `<div>${product.price}</div>` +
+        `<a href="https://example.com/producs/${product.id}">Подробнее</a>` +
+        `</div>`
+}
 
+let divProducts = document.querySelector("div.products");
+let buttons = document.querySelectorAll("button");
+
+for (const button of buttons) {
+    button.addEventListener("click", clickHandler);
 }
