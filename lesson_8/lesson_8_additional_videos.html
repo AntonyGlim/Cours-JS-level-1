@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        "use strict"; {
+            console.log("1 spread - вставка одного массива в другой (операция spread (...))");
+            let arr1 = [33, 44, 55];
+            let arr2 = [1, 2, ...arr1, 6, 7, 8];
+            console.log(arr2);
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("1 spread - найти максимальное число в массиве");
+            let arr = [33, 44, 55];
+            let max = Math.max(...arr);
+            console.log("Max = " + max);
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("1 spread - копирование массива");
+            let arr1 = [33, 44, 55];
+            let arr2 = [...arr1];
+            arr1[0] = 3333333;
+            console.log(`arr1 = ${arr1}, arr2 = ${arr2}`);
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("1 spread - слово в массив букв");
+            let word = "hello";
+            let arr = [...word]
+            console.log(arr);
+            console.log(" ");
+        }
+    </script>
+
+    <script>
+        "use strict"; {
+            console.log("2 Деструктуризация - массив разложить в переменные");
+            let values = [1, 2, 3];
+            let [num1, num2, num3] = values;
+            console.log(`num1 = ${num1}, num2 = ${num2}, num3 = ${num3}`);
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("2 Деструктуризация - пропустим некоторые");
+            let values = [1, 2, 3];
+            let [, num2] = values;
+            console.log(`num2 = ${num2}`);
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("2 Деструктуризация - строки");
+            let [symbol1, symbol2] = "HI";
+            console.log(`symbol1 = ${symbol1}, symbol2 = ${symbol2}`);
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("2 Деструктуризация - свойства о-та");
+            let comment = {};
+            [comment.text, comment.id] = ["Hello", 4];
+            console.log(comment);
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("2 Деструктуризация - некоторые - в переменные, а остальные в новый массив");
+            let [one, two, ...others] = [1, 2, 3, 4, 5];
+            console.log(`one = ${one}, two = ${two}, others = ${others}`);
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("2 Деструктуризация - значения по умолчанию");
+            let [one = 1, two = 2] = [111];
+
+            console.log(`one = ${one}, two = ${two}`); //111, 2
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("2 Деструктуризация - о-та");
+            let user = {
+                id: 7,
+                name: "Alex"
+            };
+            let {
+                id,
+                name
+            } = user;
+            console.log(`id = ${id}, name = ${name}`);
+            let {
+                id: userId,
+                name: userName
+            } = user;
+            console.log(`userId = ${userId}, userName = ${userName}`);
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("2 Деструктуризация - значения по умолчанию");
+            let word = {
+                val: "text"
+            };
+            let {
+                val = "Hi"
+            } = word;
+            console.log(val);
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("2 Деструктуризация - берем только нужное");
+            let message = {
+                id: 4,
+                text: "hi"
+            };
+            let {
+                text
+            } = message;
+            console.log("text");
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("2 Деструктуризация - только нужное и все остальное");
+            let message = {
+                id: 4,
+                text: "hi",
+                length: 8
+            };
+            let {
+                id,
+                ...others
+            } = message;
+            console.log(`id = ${id}`);
+            console.log(others);
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("2 Деструктуризация - в существующую переменную");
+            let title = "Old title";
+            let text = "Old comment text";
+            let comment = {
+                title: "New title",
+                text: "New comment text"
+            };
+            ({
+                title,
+                text
+            } = comment);
+            console.log(`title = ${title}, text = ${text}`);
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("2 Деструктуризация - вложенные (20:00 на видео)");
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("2 Деструктуризация - при передаче в ф-ыю");
+
+            function printParameters({
+                health = 100,
+                score = 0,
+                ammo = 30
+            } = {}) {
+                console.log(`health = ${health}, score = ${score}, ammo = ${ammo}`);
+            }
+            printParameters({
+                score: 10
+            }); //health = 100, score = 10, ammo = 30
+            printParameters(); //health = 100, score = 0, ammo = 30
+
+            console.log(" ");
+        }
+    </script>
+    <script>
+        "use strict"; {
+            console.log("2 Деструктуризация - при передаче в ф-ыю вложенных (27:00 на видео");
+            console.log(" ");
+        }
+    </script>
+
+    <script>
+        "use strict"; {
+            console.log("3 Про цикл событий в Javascript или как на самом деле работает асинхронность");
+
+            console.log("");
+            console.log(" ");
+        }
+    </script>
+
+</body>
+
+</html>
