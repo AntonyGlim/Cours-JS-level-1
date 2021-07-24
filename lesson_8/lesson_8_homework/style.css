@@ -61,7 +61,7 @@ body {
 }
 
 .cartIconWrap span {
-    display: inline-block;
+    display: none;
     width: 19px;
     height: 19px;
     color: white;
@@ -192,12 +192,12 @@ body {
     margin-left: 9px;
 }
 
-.filtersRight > div:not(:last-child) {
+.filtersRight>div:not(:last-child) {
     margin-right: 15px;
 }
 
 @media (min-width: 375px) {
-    .filtersRight > div:not(:last-child) {
+    .filtersRight>div:not(:last-child) {
         margin-right: 24px;
     }
 }
@@ -327,7 +327,7 @@ body {
     color: #6f6e6e;
 }
 
-.filterSizes > div:not(:last-child) {
+.filterSizes>div:not(:last-child) {
     margin-bottom: 4px;
 }
 
@@ -547,7 +547,6 @@ body {
         padding-top: 97px;
         padding-bottom: 126px;
     }
-
     .subscribe .container {
         margin: 0 auto;
         width: 1140px;
@@ -623,16 +622,19 @@ body {
     font-family: inherit;
     opacity: 0.67;
 }
+
 .subscribeForm input::-moz-placeholder {
     color: #222224;
     font-family: inherit;
     opacity: 0.67;
 }
+
 .subscribeForm input:-ms-input-placeholder {
     color: #222224;
     font-family: inherit;
     opacity: 0.67;
 }
+
 .subscribeForm input:-moz-placeholder {
     color: #222224;
     font-family: inherit;
