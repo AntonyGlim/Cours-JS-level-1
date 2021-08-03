@@ -24,23 +24,19 @@
                 <span class="cartIconWrap">
                     <img class="cartIcon" src="images/cart.png" alt="">
                     <span>0</span>
-                <div class="cartTableWrapper">
-                    <table class="cartTable">
-                        <tr>
-                            <th>Название товара</th>
-                            <th>Количество</th>
-                            <th>Цена за штуку</th>
-                            <th>Итого</th>
-                        </tr>
-                        <tr>
-                            <td>Jill</td>
-                            <td>Smith</td>
-                            <td>50</td>
-                            <td>50</td>
-                        </tr>
-                    </table>
-                </div>
                 </span>
+
+                <div class="cartTableWrapper hidden">
+                    <div class="cartTableHeader">
+                        <div>Название товара</div>
+                        <div>Количество</div>
+                        <div>Цена за штуку</div>
+                        <div>Итого</div>
+                    </div>
+                    <div class="cartTebleFooter">
+                        Общая стоимость: <span class="totalPrice"></span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

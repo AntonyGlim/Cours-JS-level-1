@@ -34,7 +34,9 @@ filterSizeWrap.addEventListener('click', function() {
 //
 //
 
+let cartWrap = document.querySelector("span.cartIconWrap");
 let cartCounter = document.querySelector("span.cartIconWrap span");
+let cartTableWrapper = document.querySelector("div.cartTableWrapper");
 
 /**
  * Array with products and count:
@@ -89,6 +91,7 @@ function onAddToCartButtonClick(event) {
     incrementCartCounterValue();
     let product = buildProduct(event);
     addProductToCart(product);
+    renderCart();
 }
 
 /**
@@ -105,7 +108,6 @@ function addProductToCart(product) {
         productFromCart.count++;
         productFromCart.summ = calculatePriceSumm(productFromCart.count, productFromCart.price);
     }
-    console.log(cart);
 }
 
 /**
@@ -146,5 +148,73 @@ function addEventClickListinerForAddToCartButtons() {
     }
 }
 
+/**
+ * Show or hide cart table wrapper element
+ */
+function showOrHideCartTableWrapper() {
+    cartTableWrapper.classList.toggle("hidden");
+}
+
+/**
+ * Render cart
+ */
+function renderCart() {
+    removeAllCartTableLines();
+    let cartTebleFooter = document.querySelector("div.cartTebleFooter");
+    for (let index = 0; index < cart.length; index++) {
+        cartTebleFooter.insertAdjacentHTML('beforebegin', renderCartLine(cart[index]));
+    }
+    calculateAndSetTotalSumm();
+}
+
+/**
+ * Remove all cart table lines
+ */
+function removeAllCartTableLines() {
+    let cartTableLines = document.querySelectorAll("div.cartTableLine");
+    for (const cartTableLine of cartTableLines) {
+        cartTableLine.remove();
+    }
+}
+
+/**
+ * Prepare html 
+ * @param {*} cartItem 
+ * @returns html cart line
+ */
+function renderCartLine(cartItem) {
+    return `                    
+        <div class="cartTableLine">
+            <div>${cartItem.name}</div>
+            <div>${cartItem.count}</div>
+            <div>${cartItem.price}</div>
+            <div>${cartItem.summ}</div>
+        </div>
+        `
+}
+
+/**
+ * Find totalPrice class on html page
+ * Calculate and set total summ
+ */
+function calculateAndSetTotalSumm() {
+    let totalPriceSpan = document.querySelector("span.totalPrice");
+    totalPriceSpan.innerText = calculateTotalSummInCart();
+}
+
+/**
+ * Iterate by all cart elements, and calculate they total summ
+ * @returns total summ of all elements in cart
+ */
+function calculateTotalSummInCart() {
+    let totalSumm = 0;
+    for (let index = 0; index < cart.length; index++) {
+        let summ = cart[index].summ.substring(1, cart[index].summ.length);
+        totalSumm += +summ;
+    }
+    return "$" + totalSumm;
+}
+
 showOrHideCartCounter();
 addEventClickListinerForAddToCartButtons();
+cartWrap.addEventListener("click", showOrHideCartTableWrapper);
