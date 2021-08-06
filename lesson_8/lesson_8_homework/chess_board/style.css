@@ -1,14 +1,21 @@
 :root {
-    --cell-width-and-height: 60px;
+    --cell-width-and-height: 80px;
     --main-black-color: black;
     --main-white-color: white;
     --main-brown-black-color: rgb(100, 40, 11);
     --main-brown-white-color: rgb(226, 185, 126);
+    --chess-figure-size: calc(var(--cell-width-and-height) * 2 / 3);
+}
+
+body {
+    background-color: cadetblue;
 }
 
 table {
     table-layout: fixed;
     border: 1px solid var(--main-black-color);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 td,
@@ -16,6 +23,8 @@ th {
     border: 1px solid var(--main-black-color);
     width: var(--cell-width-and-height);
     height: var(--cell-width-and-height);
+    vertical-align: middle;
+    text-align: center;
 }
 
 .brown-black {
@@ -24,4 +33,18 @@ th {
 
 .brown-white {
     background-color: var(--main-brown-white-color);
+}
+
+.chess-figure {
+    font-size: var(--chess-figure-size);
+}
+
+.black {
+    color: var(--main-black-color);
+    text-shadow: var(--main-white-color) 0px 0px 3px;
+}
+
+.white {
+    color: var(--main-white-color);
+    text-shadow: var(--main-black-color) 0px 0px 3px;
 }
