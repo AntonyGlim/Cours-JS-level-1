@@ -1,6 +1,7 @@
 "use strict";
 
 // constants
+const container = document.querySelector("div.container");
 const chessBoardSize = 8;
 
 const white = "white";
@@ -42,6 +43,7 @@ function buildChessBoardWithoutFigures() {
         chessBoard.cells.push(row);
         cellColor = invertColor(cellColor);
     }
+    console.log(chessBoard);
 }
 
 /**
@@ -58,6 +60,7 @@ function addFigures() {
     addBishops();
     addKings();
     addQueens();
+    console.log(chessBoard);
 }
 
 function addFigure(figureName, lit, num, color) {
@@ -99,7 +102,7 @@ function addQueens() {
 function addPawns() {
     for (const lit of literals) {
         addFigure(pawn, lit, 2 - 1, white);
-        addFigure(pawn, lit, 7 - 1, white);
+        addFigure(pawn, lit, 7 - 1, black);
     }
 }
 
@@ -112,6 +115,57 @@ function invertColor(cellColor) {
     return cellColor === white ? black : white;
 }
 
+/**
+ * Paint chessboard on page
+ */
+function showChessBoardOnPage() {
+    let chessBoardTable = removeChessBoardTableFromPageIfPresentAndCreateNewAndReturn();
+    for (let i = 0; i <= chessBoard.size - 1; i++) {
+        let tableRow = chessBoardTable.insertRow()
+        buildChessBoardRow(chessBoard.cells[i], tableRow);
+    }
+}
+
+/**
+ * Remove table from page if present
+ * and create new table? and add it to page
+ * 
+ * @returns <table class="chess-board-table"></table> tag on page and fill it
+ */
+function removeChessBoardTableFromPageIfPresentAndCreateNewAndReturn() {
+    let chessBoardTable = document.querySelector("table.chess-board-table");
+    if (chessBoardTable) chessBoardTable.remove();
+    chessBoardTable = document.createElement("table");
+    chessBoardTable.classList.add("chess-board-table");
+    container.appendChild(chessBoardTable);
+    return chessBoardTable;
+}
+
+/**
+ *  Build board row
+ * @param {*} cellsRow - object from json
+ * @param {*} tableRow - element (node)
+ */
+function buildChessBoardRow(cellsRow, tableRow) {
+    for (let i = 0; i < cellsRow.length; i++) {
+        let tableCell = tableRow.insertCell();
+        buildChessBoardCell(cellsRow[i], tableCell);
+    }
+}
+
+/**
+ * Build board cell
+ * 
+ * @param {*} cell - object from json
+ * @param {*} tableCell - element (node)
+ */
+function buildChessBoardCell(cell, tableCell) {
+    tableCell.classList.add(`brown-${cell.color}`);
+    if (cell.figure) {
+        tableCell.innerHTML = `<i class="${cell.figure.name} chess-figure ${cell.figure.color}"></i>`;
+    }
+}
 
 buildChessBoardWithoutFigures();
 addFigures();
+showChessBoardOnPage();

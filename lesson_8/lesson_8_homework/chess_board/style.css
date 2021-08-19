@@ -1,5 +1,5 @@
 :root {
-    --cell-width-and-height: 80px;
+    --cell-width-and-height: 70px;
     --main-black-color: black;
     --main-white-color: white;
     --main-brown-black-color: rgb(100, 40, 11);
@@ -8,12 +8,22 @@
 }
 
 body {
+    background-image: url("http://pattern4site.ru/images/noise/_rebig/10-fon-dlya-sayta.png");
     background-color: cadetblue;
+    background-position: center;
 }
 
 table {
     table-layout: fixed;
     border: 1px solid var(--main-black-color);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.outboarde {
+    width: 100%;
+    text-align: center;
+    margin: calc(var(--cell-width-and-height) / 2);
     margin-left: auto;
     margin-right: auto;
 }
@@ -47,4 +57,11 @@ th {
 .white {
     color: var(--main-white-color);
     text-shadow: var(--main-black-color) 0px 0px 3px;
+}
+
+.border-horizontal,
+.border-vertical {
+    background-color: var(--main-brown-white-color);
+    font-size: calc(var(--chess-figure-size) / 2);
+    font-weight: bold;
 }
