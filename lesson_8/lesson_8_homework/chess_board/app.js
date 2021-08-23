@@ -121,10 +121,30 @@ function invertColor(cellColor) {
  */
 function showChessBoardOnPage() {
     let chessBoardTable = removeChessBoardTableFromPageIfPresentAndCreateNewAndReturn();
+    insertHorizontalBorder(chessBoardTable);
     for (let i = 0; i <= chessBoard.size - 1; i++) {
-        let tableRow = chessBoardTable.insertRow()
-        buildChessBoardRow(chessBoard.cells[i], tableRow);
+        let tableRow = chessBoardTable.insertRow();
+        buildChessBoardRow(chessBoard.cells[i], tableRow, i + 1);
     }
+    insertHorizontalBorder(chessBoardTable);
+}
+
+/*         _____________________
+ * Insert: | |A|B|C|D|I|F|G|H| | row
+ * @param {Element} chessBoardTable - table element
+ */
+function insertHorizontalBorder(chessBoardTable) {
+    let tableRow = chessBoardTable.insertRow();
+    buildBoarderCell(" ", "border-horizontal", tableRow.insertCell());
+    buildBoarderCell("A", "border-horizontal", tableRow.insertCell());
+    buildBoarderCell("B", "border-horizontal", tableRow.insertCell());
+    buildBoarderCell("C", "border-horizontal", tableRow.insertCell());
+    buildBoarderCell("D", "border-horizontal", tableRow.insertCell());
+    buildBoarderCell("I", "border-horizontal", tableRow.insertCell());
+    buildBoarderCell("F", "border-horizontal", tableRow.insertCell());
+    buildBoarderCell("G", "border-horizontal", tableRow.insertCell());
+    buildBoarderCell("H", "border-horizontal", tableRow.insertCell());
+    buildBoarderCell(" ", "border-horizontal", tableRow.insertCell());
 }
 
 /**
@@ -147,11 +167,13 @@ function removeChessBoardTableFromPageIfPresentAndCreateNewAndReturn() {
  * @param {*} cellsRow - object from json
  * @param {*} tableRow - element (node)
  */
-function buildChessBoardRow(cellsRow, tableRow) {
+function buildChessBoardRow(cellsRow, tableRow, tableRowNumber) {
+    buildBoarderCell(tableRowNumber, "border-vertical", tableRow.insertCell());
     for (let i = 0; i < cellsRow.length; i++) {
         let tableCell = tableRow.insertCell();
         buildChessBoardCell(cellsRow[i], tableCell);
     }
+    buildBoarderCell(tableRowNumber, "border-vertical", tableRow.insertCell());
 }
 
 /**
@@ -168,6 +190,17 @@ function buildChessBoardCell(cell, tableCell) {
     if (cell.figure) {
         tableCell.innerHTML = `<i class="${cell.figure.name} chess-figure ${cell.figure.color}"></i>`;
     }
+}
+
+/**
+ * Build border cell
+ * @param {*} title - like A, B, ... H or 1, 2, ... 8
+ * @param {*} clazz - "border-horizontal" or "border-vertical"
+ * @param {*} tableCell - cell of table
+ */
+function buildBoarderCell(title, clazz, tableCell) {
+    tableCell.classList.add(clazz);
+    tableCell.innerHTML = title;
 }
 
 /**
