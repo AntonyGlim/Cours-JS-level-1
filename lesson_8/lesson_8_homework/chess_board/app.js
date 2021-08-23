@@ -50,7 +50,8 @@ function buildChessBoardWithoutFigures() {
  * figure = {
  *     color: white,
  *     name: pawn,
- *     onBoard: true
+ *     onBoard: true,
+ *     active: false
  * }
  */
 function addFigures() {
@@ -134,7 +135,7 @@ function showChessBoardOnPage() {
  */
 function removeChessBoardTableFromPageIfPresentAndCreateNewAndReturn() {
     let chessBoardTable = document.querySelector("table.chess-board-table");
-    if (chessBoardTable) chessBoardTable.remove();
+    //if (chessBoardTable) chessBoardTable.remove();
     chessBoardTable = document.createElement("table");
     chessBoardTable.classList.add("chess-board-table");
     container.appendChild(chessBoardTable);
@@ -161,9 +162,51 @@ function buildChessBoardRow(cellsRow, tableRow) {
  */
 function buildChessBoardCell(cell, tableCell) {
     tableCell.classList.add(`brown-${cell.color}`);
+    tableCell.setAttribute("lit", cell.lit);
+    tableCell.setAttribute("num", cell.num);
+    tableCell.addEventListener("click", onTableCellClick);
     if (cell.figure) {
         tableCell.innerHTML = `<i class="${cell.figure.name} chess-figure ${cell.figure.color}"></i>`;
     }
+}
+
+/**
+ * 
+ * @param {MouseEvent} event 
+ */
+function onTableCellClick(event) {
+    let cell = event.target;
+    if (cell.tagName.toUpperCase() === "I") cell = event.target.parentElement;
+    console.log(cell);
+    let coordinates = detectCoordinatesFromTag(cell);
+    console.log(`lit: ${coordinates.lit}, num: ${coordinates.num}`);
+}
+
+/**
+ * Go thrue chessBoard and check all figures active status
+ * @returns cell if it is active
+ */
+function getActiveFigureCoordinates() {
+    for (let i = 0; i < chessBoard.size; i++) {
+        let row = chessBoard.cells[i];
+        for (let j = 0; j < row.length; j++) {
+            let figure = row[j].figure;
+            if (figure != null && figure.active == true) {
+                console.log(row[j]);
+                return row[j];
+            }
+        }
+    }
+    return null;
+}
+
+/**
+ * Detect coordinates from tag
+ * @param {Element} cellAsTdElement - for example: <td class="brown-black" lit="a" num="4"></td>
+ * @returns coordinates like {lit: "a", num: "4"}
+ */
+function detectCoordinatesFromTag(cellAsTdElement) {
+    return { lit: cellAsTdElement.getAttribute("lit"), num: cellAsTdElement.getAttribute("num") }
 }
 
 buildChessBoardWithoutFigures();
