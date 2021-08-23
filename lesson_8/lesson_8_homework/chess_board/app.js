@@ -242,6 +242,8 @@ function detectCoordinatesFromTag(cellAsTdElement) {
     return { lit: cellAsTdElement.getAttribute("lit"), num: cellAsTdElement.getAttribute("num") }
 }
 
+
 buildChessBoardWithoutFigures();
 addFigures();
+
 showChessBoardOnPage();
