@@ -4,6 +4,7 @@
     --main-white-color: white;
     --main-brown-black-color: rgb(100, 40, 11);
     --main-brown-white-color: rgb(226, 185, 126);
+    --main-active-color: green;
     --chess-figure-size: calc(var(--cell-width-and-height) * 2 / 3);
 }
 
@@ -64,4 +65,8 @@ th {
     background-color: var(--main-brown-white-color);
     font-size: calc(var(--chess-figure-size) / 2);
     font-weight: bold;
+}
+
+.active {
+    text-shadow: var(--main-active-color) 2px 2px 0, var(--main-active-color) -2px -2px 0, var(--main-active-color) -2px 2px 0, var(--main-active-color) 2px -2px 0;
 }
